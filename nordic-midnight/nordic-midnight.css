@@ -1,0 +1,355 @@
+/* === Nordic Midnight — Super Productivity Theme ===
+ * Forked from Forêt Miel (MIT License, OnzeBleu)
+ * Updated for higher contrast ratios, #1a1d24 dark canvas, #81a1c1 primary accents,
+ * automatic system preference (prefers-color-scheme), and responsive viewports.
+ */
+
+:root,
+body,
+body.isDarkTheme {
+  color-scheme: dark;
+
+  /* Core Nordic Midnight Palette */
+  --nm-bg: #1a1d24;
+  --nm-bg-deep: #13161c;
+  --nm-surface: #222731;
+  --nm-surface-hover: #2a303d;
+  --nm-surface-elevated: #252b36;
+  --nm-accent: #81a1c1;
+  --nm-accent-hover: #9ab5d1;
+  --nm-accent-deep: #5e81ac;
+  --nm-frost: #88c0d0;
+  --nm-snow: #eceff4;
+  --nm-mist: #9aa5b8;
+
+  /* Semantic Status Tokens */
+  --nm-success: #7fc19c;
+  --nm-warning: #ebcb8b;
+  --nm-danger: #e07a85;
+
+  /* Legacy & Theme Token Integration (Compatible with Forêt Miel variables) */
+  --canvas: #eceff4;
+  --honey: #81a1c1;
+  --amber: #9aa5b8;
+  --jade: #5e81ac;
+  --bark: #222731;
+  --evergreen: #1a1d24;
+
+  /* Surfaces */
+  --surface-0: #13161c;   /* Deepest recessed surface / sidebar */
+  --surface-1: #1a1d24;   /* Primary application canvas */
+  --surface-2: #222731;   /* Task cards & primary containers */
+  --surface-3: #2a303d;   /* Hover / active card state */
+  --surface-4: #252b36;   /* Toolbar, modals & banners */
+
+  /* Ink (Typography) */
+  --ink: #eceff4;
+  --ink-strong: #ffffff;
+  --ink-muted: #9aa5b8;
+  --ink-on-accent: #13161c;
+  --ink-on-channel: 236, 239, 244;
+
+  /* Interactive States */
+  --state-hover-alpha: 0.08;
+  --state-focus-alpha: 0.16;
+  --state-pressed-alpha: 0.14;
+  --state-selected-alpha: 0.20;
+
+  /* Lines, Borders & Scrims */
+  --separator: rgba(129, 161, 193, 0.22);
+  --divider: rgba(236, 239, 244, 0.10);
+  --card-border: rgba(236, 239, 244, 0.08);
+  --card-border-hover: rgba(129, 161, 193, 0.42);
+  --scrim: rgba(13, 16, 22, 0.78);
+  --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.28);
+  --shadow-focus: 0 0 0 1px #81a1c1, 0 0 18px rgba(129, 161, 193, 0.22);
+}
+
+/* Dynamic System Light Preference (when not explicitly locked to dark mode) */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]),
+  body:not(.isDarkTheme) {
+    color-scheme: light;
+
+    --nm-bg: #f4f6f9;
+    --nm-bg-deep: #e8ecf2;
+    --nm-surface: #ffffff;
+    --nm-surface-hover: #eef2f7;
+    --nm-surface-elevated: #ffffff;
+    --nm-accent: #43658b;
+    --nm-accent-hover: #355273;
+    --nm-accent-deep: #81a1c1;
+    --nm-frost: #3b768f;
+    --nm-snow: #1a1d24;
+    --nm-mist: #4d576a;
+
+    --canvas: #1a1d24;
+    --honey: #43658b;
+    --amber: #4d576a;
+    --jade: #81a1c1;
+    --bark: #ffffff;
+    --evergreen: #f4f6f9;
+
+    --surface-0: #e8ecf2;
+    --surface-1: #f4f6f9;
+    --surface-2: #ffffff;
+    --surface-3: #eef2f7;
+    --surface-4: #ffffff;
+
+    --ink: #1a1d24;
+    --ink-strong: #0f1217;
+    --ink-muted: #4d576a;
+    --ink-on-accent: #ffffff;
+    --ink-on-channel: 26, 29, 36;
+
+    --separator: rgba(67, 101, 139, 0.20);
+    --divider: rgba(26, 29, 36, 0.09);
+    --card-border: rgba(26, 29, 36, 0.10);
+    --card-border-hover: rgba(67, 101, 139, 0.45);
+    --scrim: rgba(26, 29, 36, 0.45);
+    --shadow-card: 0 1px 4px rgba(26, 29, 36, 0.06);
+    --shadow-focus: 0 0 0 1px #43658b, 0 4px 14px rgba(67, 101, 139, 0.16);
+  }
+}
+
+/* Explicit Super Productivity Light Theme Override */
+body.isLightTheme,
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --nm-bg: #f4f6f9;
+  --nm-bg-deep: #e8ecf2;
+  --nm-surface: #ffffff;
+  --nm-surface-hover: #eef2f7;
+  --nm-surface-elevated: #ffffff;
+  --nm-accent: #43658b;
+  --nm-accent-hover: #355273;
+  --nm-accent-deep: #81a1c1;
+  --nm-frost: #3b768f;
+  --nm-snow: #1a1d24;
+  --nm-mist: #4d576a;
+
+  --canvas: #1a1d24;
+  --honey: #43658b;
+  --amber: #4d576a;
+  --jade: #81a1c1;
+  --bark: #ffffff;
+  --evergreen: #f4f6f9;
+
+  --surface-0: #e8ecf2;
+  --surface-1: #f4f6f9;
+  --surface-2: #ffffff;
+  --surface-3: #eef2f7;
+  --surface-4: #ffffff;
+
+  --ink: #1a1d24;
+  --ink-strong: #0f1217;
+  --ink-muted: #4d576a;
+  --ink-on-accent: #ffffff;
+  --ink-on-channel: 26, 29, 36;
+
+  --separator: rgba(67, 101, 139, 0.20);
+  --divider: rgba(26, 29, 36, 0.09);
+  --card-border: rgba(26, 29, 36, 0.10);
+  --card-border-hover: rgba(67, 101, 139, 0.45);
+  --scrim: rgba(26, 29, 36, 0.45);
+  --shadow-card: 0 1px 4px rgba(26, 29, 36, 0.06);
+  --shadow-focus: 0 0 0 1px #43658b, 0 4px 14px rgba(67, 101, 139, 0.16);
+}
+
+/* Application Canvas */
+body,
+body.isLightTheme,
+body.isDarkTheme,
+.mat-drawer-container,
+.mat-sidenav-content {
+  background-color: var(--surface-1) !important;
+  background-image: radial-gradient(
+    ellipse 80% 50% at 85% 0%,
+    rgba(129, 161, 193, 0.09) 0%,
+    transparent 65%
+  ) !important;
+  background-attachment: fixed !important;
+  color: var(--ink) !important;
+}
+
+/* Top Toolbar */
+body mat-toolbar,
+body .mat-toolbar {
+  background: var(--surface-4) !important;
+  color: var(--ink-strong) !important;
+  border-bottom: 1px solid var(--divider) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.16);
+}
+
+/* Navigation Sidenav */
+body .mat-drawer,
+body .mat-sidenav {
+  background: var(--surface-0) !important;
+  color: var(--ink) !important;
+  border-right: 1px solid var(--divider) !important;
+  max-width: min(85vw, 280px);
+}
+
+/* Task Cards — High-Contrast Surface with Clean Perimeter Hairline */
+body task,
+body .task,
+body.isLightTheme task,
+body.isLightTheme .task,
+body.isDarkTheme task,
+body.isDarkTheme .task {
+  background: var(--surface-2) !important;
+  color: var(--ink) !important;
+  border-radius: 10px !important;
+  margin: 6px 0 !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: var(--shadow-card) !important;
+  transition: background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+body task:hover,
+body .task:hover,
+body.isLightTheme task:hover,
+body.isLightTheme .task:hover {
+  background: var(--surface-3) !important;
+  border-color: var(--card-border-hover) !important;
+}
+
+/* Active / Current Running Task */
+body task.isCurrent,
+body .task.isCurrent {
+  border-color: var(--nm-accent) !important;
+  box-shadow: var(--shadow-focus) !important;
+}
+
+/* Completed Tasks */
+body task.isDone,
+body .task.isDone {
+  opacity: 0.62;
+  filter: saturate(0.75);
+}
+
+/* Modals, Menus & Dialogs */
+body .mat-mdc-dialog-container .mdc-dialog__surface,
+body .mat-mdc-menu-panel,
+body .mat-mdc-card {
+  background: var(--surface-4) !important;
+  color: var(--ink) !important;
+  border: 1px solid var(--divider) !important;
+}
+
+/* Primary Buttons */
+body .mat-mdc-raised-button,
+body .mat-mdc-unelevated-button,
+body .mat-mdc-fab,
+body .mat-mdc-mini-fab {
+  background: var(--nm-accent) !important;
+  color: var(--ink-on-accent) !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+body .mat-mdc-raised-button:hover,
+body .mat-mdc-unelevated-button:hover,
+body .mat-mdc-fab:hover,
+body .mat-mdc-mini-fab:hover {
+  background: var(--nm-accent-hover) !important;
+}
+
+body .mat-mdc-fab,
+body .mat-mdc-mini-fab {
+  border-radius: 999px !important;
+}
+
+body .mat-mdc-raised-button .mat-icon,
+body .mat-mdc-unelevated-button .mat-icon,
+body .mat-mdc-fab .mat-icon,
+body .mat-mdc-mini-fab .mat-icon {
+  color: var(--ink-on-accent) !important;
+}
+
+/* Progress Bar */
+body .mat-mdc-progress-bar .mdc-linear-progress__bar-inner {
+  border-color: var(--nm-accent) !important;
+}
+
+/* Links, Accents & Icons */
+body a,
+body .mat-icon {
+  color: var(--nm-accent);
+}
+
+/* Focus-Visible Accessibility Ring */
+body *:focus-visible {
+  outline: 2px solid var(--nm-accent) !important;
+  outline-offset: 2px;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--surface-0);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--separator);
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--nm-accent);
+}
+
+/* Focus Mode — Responsive Full-Width Session Band */
+body focus-mode-overlay task,
+body focus-mode-overlay .task,
+body focus-mode-main task,
+body focus-mode-main .task,
+body focus-mode-main .current-task,
+body .focus-mode task,
+body .focus-mode .task {
+  width: 100% !important;
+  max-width: min(920px, 100%) !important;
+  margin: 0 auto !important;
+  padding: clamp(16px, 3vw, 28px) clamp(16px, 4vw, 32px) !important;
+  min-height: 96px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--nm-accent) !important;
+  box-shadow: var(--shadow-focus) !important;
+  transform: none !important;
+}
+
+/* Responsive Adjustments for Mobile & Tablet Viewports */
+@media (max-width: 768px) {
+  body task,
+  body .task {
+    margin: 4px 0 !important;
+    min-height: 48px;
+  }
+
+  body mat-toolbar,
+  body .mat-toolbar {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+
+  body .mat-mdc-raised-button,
+  body .mat-mdc-unelevated-button {
+    min-height: 44px !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body task,
+  body .task,
+  body .mat-mdc-raised-button,
+  body .mat-mdc-unelevated-button {
+    transition: none !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Nordic Midnight",
+  "description": "High-contrast Nordic Midnight theme for Super Productivity (#1a1d24 canvas, #81a1c1 accents) with dynamic system preference toggling, WCAG contrast audit, and live responsive preview.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

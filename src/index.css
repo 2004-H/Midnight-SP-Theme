@@ -1,0 +1,102 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Nordic Midnight App Stylesheet
+ * Integrates seamlessly with the Super Productivity CSS variables from nordic-midnight.css
+ * and provides dual-theme (System / Dark / Light) support without !important inversion hacks.
+ */
+
+:root {
+  color-scheme: light;
+
+  --surface-0: #e8ecf2;
+  --surface-1: #f4f6f9;
+  --surface-2: #ffffff;
+  --surface-3: #eef2f7;
+  --surface-4: #ffffff;
+
+  --ink: #1a1d24;
+  --ink-strong: #0f1217;
+  --ink-muted: #4d576a;
+  --ink-on-accent: #ffffff;
+
+  --nm-accent: #43658b;
+  --nm-accent-hover: #355273;
+  --nm-accent-soft: #81a1c1;
+  --nm-frost: #3b768f;
+
+  --separator: rgba(67, 101, 139, 0.2);
+  --divider: rgba(26, 29, 36, 0.1);
+  --card-border: rgba(26, 29, 36, 0.1);
+  --scrim: rgba(26, 29, 36, 0.45);
+}
+
+.dark {
+  color-scheme: dark;
+
+  --surface-0: #13161c;
+  --surface-1: #1a1d24;
+  --surface-2: #222731;
+  --surface-3: #2a303d;
+  --surface-4: #252b36;
+
+  --ink: #eceff4;
+  --ink-strong: #ffffff;
+  --ink-muted: #9aa5b8;
+  --ink-on-accent: #13161c;
+
+  --nm-accent: #81a1c1;
+  --nm-accent-hover: #9ab5d1;
+  --nm-accent-soft: #5e81ac;
+  --nm-frost: #88c0d0;
+
+  --separator: rgba(129, 161, 193, 0.22);
+  --divider: rgba(236, 239, 244, 0.09);
+  --card-border: rgba(236, 239, 244, 0.08);
+  --scrim: rgba(13, 16, 22, 0.78);
+}
+
+@layer base {
+  html {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: var(--surface-1);
+    color: var(--ink);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--surface-1);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 180ms cubic-bezier(0.16, 1, 0.3, 1), color 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .dark body {
+    letter-spacing: 0.005em;
+  }
+
+  code,
+  pre,
+  .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
